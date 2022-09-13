@@ -1,7 +1,7 @@
 <div class="column" xmlns="http://www.w3.org/1999/html">
-    <h3>Кофейный автомат</h3>
-    <div class="credit">Кредит: {{creditAmount}}р. </div>
-    <div class="menu">
+    <h3 class="header">Кофейный автомат</h3>
+    <div class="credit block">Кредит: {{creditAmount}}р. </div>
+    <div class="menu block">
         <form [formGroup]="menuForm" (ngSubmit)="onSubmit()">
             <select
                     class="select"
@@ -12,15 +12,15 @@
                     {{ item.name }}
                 </option>
             </select>
-            <span>{{selectedItem?.price}}р. - {{selectedItem?.amount}} шт.</span>
-            <button type="submit" >
+            <span>  {{selectedItem?.price}}р. - {{selectedItem?.amount}} шт.  </span>
+            <button type="submit" class="btn-dark">
                 Купить
             </button>
         </form>
     </div>
-    <div class="cf-wallet">
-        <h3>Остаток банкнот</h3>
-        <ul>
+    <div class="cf-wallet ">
+        <h3 class="header">Остаток банкнот</h3>
+        <ul class="block">
             <li *ngFor="let coin of cFWalletAmount">
                 {{coin.nominal}}р. - {{coin.amount}}шт.
             </li>

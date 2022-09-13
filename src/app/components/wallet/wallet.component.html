@@ -1,10 +1,10 @@
 <div class="column">
-    <h3>Клиент</h3>
-    <ul>
+    <h3 class="header">Клиент</h3>
+    <ul class="block">
         <li *ngFor="let coin of walletAmount" >
-            <button (click)="addCoin(coin.nominal)" [value]="coin" [disabled]="coin.amount < 1"><<{{coin.nominal}}р.</button>  {{coin.amount}}шт.
+            <button  class="btn-dark" (click)="addCoin(coin.nominal)" [value]="coin" [disabled]="coin.amount < 1"><<{{coin.nominal}}р.</button>  {{coin.amount}}шт.
         </li>
     </ul>
-    <div>Сумма: {{walletSum}}р.</div>
-    <button (click)="getChange()">Забрать сдачу</button>
+    <div class="block">Сумма: {{walletSum}}р.</div>
+    <button (click)="getChange()" class="btn-light">Забрать сдачу</button>
 </div>
