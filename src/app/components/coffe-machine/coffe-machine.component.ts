@@ -33,32 +33,20 @@ export class CoffeMachineComponent implements OnInit {
       this.selectedItem = this.cfItems[0]
     });
 
-    this.coffeMachineService.getCFWalletAmount().subscribe(val => {
-      this.cFWalletAmount = val;
-      console.log("wallet cf data: ", this.cFWalletAmount);
-      this.cFWalletSum = this.cFWalletAmount.reduce((acc: any, val) => {
-        return acc + val.nominal*val.amount
-      },0);
-      console.log("wallet sum: ", this.cFWalletSum)
-    });
+    this.coffeMachineService.getCFWalletAmount();
 
     this.coffeMachineService.cFWalletAmount$.subscribe(val => {
       this.cFWalletAmount = val;
       this.cFWalletSum = this.cFWalletAmount.reduce((acc: any, val) => {
         return acc + val.nominal*val.amount
       },0);
-      console.log("wallet sum: ", this.cFWalletSum)
+      this.creditAmount = this.coffeMachineService.creditAmount$.getValue();
     })
 
-    this.coffeMachineService.getCreditAmount().subscribe(val => {
-
-      this.creditAmount = val
-
-    })
+    this.coffeMachineService.getCreditAmount();
 
     this.coffeMachineService.creditAmount$.subscribe(val => {
       this.creditAmount = val;
-      console.log("new credit amount: ", this.creditAmount)
     })
 
 
@@ -67,9 +55,7 @@ export class CoffeMachineComponent implements OnInit {
   onSubmit() {
     if (this.selectedItem.amount > 0) {
       if (this.creditAmount > this.selectedItem.price) {
-        this.coffeMachineService.buyItem(this.selectedItem.name, this.creditAmount).subscribe(val => {
-          console.log("new cf items: ", val)
-        });
+        this.coffeMachineService.buyItem(this.selectedItem.name, this.creditAmount).subscribe();
         this.selectedItem.amount--;
         alert("Спасибо за покупку!")
 
@@ -86,7 +72,4 @@ export class CoffeMachineComponent implements OnInit {
     return this.menuForm.get('cFItemName');
   }
 
-  changeItem(e: any) {
-    console.log("selected item: ", this.selectedItem)
-  }
 }

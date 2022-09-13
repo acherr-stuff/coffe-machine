@@ -5,7 +5,6 @@
         <form [formGroup]="menuForm" (ngSubmit)="onSubmit()">
             <select
                     class="select"
-                    (change)="changeItem($event)"
                     formControlName="cFItemName"
                     [(ngModel)]="selectedItem"
             >
