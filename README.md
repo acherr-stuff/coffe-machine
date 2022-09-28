@@ -1,3 +1,7 @@
+# Description
+
+Simple app to simulate interacrion between client and coffie machine using Angular. 
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
